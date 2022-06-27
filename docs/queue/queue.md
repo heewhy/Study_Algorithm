@@ -4,11 +4,9 @@
 
 - 삽입한 순서대로 원소가 저장되고, 가장 먼저 삽입된 원소가 가장 먼저 삭제되는 **FIFO** 자료구조
 - LinkedList 클래스를 Queue 인터페이스의 구현체로 많이 사용한다.
-    
-    ✨ Queue<T> que = new LinkedList<T>();
-       //Queue<T> que = new ArrayDeque<T>();
-      //ArrayDeque도 Queue를 상속하고 있기에 다형성을 이용할 수 있다.
-    
+  ✨ Queue<T> que = new LinkedList<T>();
+  //Queue<T> que = new ArrayDeque<T>();
+  //ArrayDeque도 Queue를 상속하고 있기에 다형성을 이용할 수 있다.
 
 ---
 
@@ -19,15 +17,16 @@
 - **isEmpty** : 큐에 item이 없다면 true를 반환한다.
 - **size** : 큐에 있는 item의 개수를 반환한다.
 
-|  | 예외 발생 | 값 리턴 |
-| --- | --- | --- |
-| 추가 (enqueue) | add(e) | offer(e) |
-| 삭제 (dequeue) | remove() | poll() |
-| 검사 (peek) | element() | peek() |
+|                | 예외 발생 | 값 리턴  |
+| -------------- | --------- | -------- |
+| 추가 (enqueue) | add(e)    | offer(e) |
+| 삭제 (dequeue) | remove()  | poll()   |
+| 검사 (peek)    | element() | peek()   |
 
 ✨ enqueue 동작 처리를 할 때 **Queue가 꽉 차있다면?**
-   - **add 메소드는 예외**를 발생시킨다.
-   - offer 메소드는 추가 실패를 의미하는 **false를 리턴**한다.
+
+- **add 메소드는 예외**를 발생시킨다.
+- offer 메소드는 추가 실패를 의미하는 **false를 리턴**한다.
 
 ---
 
@@ -37,37 +36,37 @@
 
 Queue<Integer> que = new LinkedList<Integer>();
 
-![1.jpg](Queue%20(%E1%84%8F%E1%85%B2)%20094bef77520f44839896876f1a420336/1.jpg)
+![1.jpg](/img/queue/1.jpg)
 
 1. **원소 A 삽입**
 
 que.offer(1);
 
-![2.jpg](Queue%20(%E1%84%8F%E1%85%B2)%20094bef77520f44839896876f1a420336/2.jpg)
+![2.jpg](/img/queue/2.jpg)
 
 1. **원소 B 삽입**
 
 que.offer(2);
 
-![3.jpg](Queue%20(%E1%84%8F%E1%85%B2)%20094bef77520f44839896876f1a420336/3.jpg)
+![3.jpg](/img/queue/3.jpg)
 
 1. **원소 반환/삭제**
 
 que.poll();
 
-![4.jpg](Queue%20(%E1%84%8F%E1%85%B2)%20094bef77520f44839896876f1a420336/4.jpg)
+![4.jpg](/img/queue/4.jpg)
 
 1. **원소 C 삽입**
 
 que.offer(3);
 
-![5.jpg](Queue%20(%E1%84%8F%E1%85%B2)%20094bef77520f44839896876f1a420336/5.jpg)
+![5.jpg](/img/queue/5.jpg)
 
 1. **원소 반환/삭제**
 
 que.poll();
 
-![6.jpg](Queue%20(%E1%84%8F%E1%85%B2)%20094bef77520f44839896876f1a420336/6.jpg)
+![6.jpg](/img/queue/6.jpg)
 
 ---
 
@@ -82,11 +81,11 @@ public class QueueTest {
 		customQueue();
 //		apiQueue();
 	}
-	
+
 	static void customQueue() {
 		CustomQueue<Integer> cq = new ArrayQueue();
 //		CustomQueue<Integer> cq = new ListQueue<>();
-		
+
 		cq.enqueue(1);
 		cq.enqueue(2);
 		cq.enqueue(5);
@@ -97,29 +96,29 @@ public class QueueTest {
 		System.out.println(cq.dequeue());
 		System.out.println(cq.dequeue());
 	}
-	
+
 	static void apiQueue() {
 		// java.util.Queue는 인터페이스
 		// 실제로 구현은 LinkedList에 되어 있음!!
-		// (Deque 인터페이스를 구현하는데, Deque가 Queue의 자식 인터페이스) 
+		// (Deque 인터페이스를 구현하는데, Deque가 Queue의 자식 인터페이스)
 		Queue<Integer> q = new LinkedList<>();
-		
+
 		// 삽입연산
 		q.offer(1);
 		// add도 쓸 수는 있는데 offer가 선호된다고 함(API)
 		q.add(1);
-		
+
 		// 삭제연산
 		q.poll();
 		// remove도 쓸 수는 있는데 queue가 비었다면 exception이 발생함
 		q.remove();
-		
+
 		// 큐가 비었는지
 		q.isEmpty();
-		
+
 		// head(front) 값 확인
 		q.peek();
-		
+
 		// 기타
 		q.size();
 		q.toArray();
